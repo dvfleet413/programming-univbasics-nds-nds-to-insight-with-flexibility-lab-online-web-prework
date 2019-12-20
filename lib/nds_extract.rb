@@ -1,5 +1,6 @@
 # Provided, don't edit
 require 'directors_database'
+require 'pp'
 
 # A method we're giving you. This "flattens"  Arrays of Arrays so: [[1,2],
 # [3,4,5], [6]] => [1,2,3,4,5,6].
@@ -48,6 +49,14 @@ def movies_with_director_key(name, movies_collection)
   # Array of Hashes where each Hash represents a movie; however, they should all have a
   # :director_name key. This addition can be done by using the provided
   # movie_with_director_name method
+
+  result = []
+  movie_index = 0
+  while movie_index < movies_collection.length do 
+    result << movie_with_director_name(name, movies_collection[movie_index])
+    movie_index += 1
+  end
+  result
 end
 
 
@@ -75,7 +84,31 @@ def movies_with_directors_set(source)
   # RETURN:
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
-  # to have a :director_name key added to it.
+  # to have a :director_name key added to it. --> use movies_with_director_names
+  
+  # { :name => "A", :movies => [{ :title => "Test" }] }
+  #        # becomes... [[{:title => "Test", :director_name => "A"}], ...[], ... []]
+  
+  # Iterate through source[director_index][:movies] array, 
+  # push movies_with_director_names(source[director_index][:name], source[director_index][:movies][movie_index]) onto result array
+
+  result = []
+  director_index = 0
+  while director_index < source.length do
+    movie_index = 0
+    while movie_index < source[director_index][:movies].length do
+      director_array = []
+      director_name = source[director_index][:name]
+      title = source[director_index][:movies][movie_index][:title]
+      element = {:title => title, :director_name => director_name}
+      director_array << element
+      movie_index += 1
+    end
+    result << director_array
+    director_index += 1
+  end
+  result
+  pp result
 end
 
 # ----------------    End of Your Code Region --------------------
