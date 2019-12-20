@@ -114,7 +114,6 @@ def movies_with_directors_set(source)
     director_index += 1
   end
   result
-  pp result
 end
 
 # ----------------    End of Your Code Region --------------------
