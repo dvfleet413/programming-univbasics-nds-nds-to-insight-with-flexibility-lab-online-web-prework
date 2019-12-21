@@ -113,7 +113,14 @@ def movies_with_directors_set(source)
       director_array = []
       director_name = source[director_index][:name]
       title = source[director_index][:movies][movie_index][:title]
-      element = {:title => title, :director_name => director_name}
+      worldwide_gross = source[director_index][:movies][movie_index][:worldwide_gross]
+      studio = source[director_index][:movies][movie_index][:studio]
+      element = {
+        :title => title, 
+        :director_name => director_name, 
+        :worldwide_gross = worldwide_gross,
+        :studio = studio
+      }
       director_array << element
       movie_index += 1
     end
