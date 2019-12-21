@@ -84,6 +84,7 @@ def gross_per_studio(collection)
     end
     i += 1
   end
+  pp collection
   puts totals
   totals
 end
