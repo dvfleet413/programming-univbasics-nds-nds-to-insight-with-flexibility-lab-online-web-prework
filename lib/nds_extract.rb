@@ -73,17 +73,18 @@ def gross_per_studio(collection)
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
   
-  result = {}
+  totals = {}
   i = 0
   while i < collection.length do
     studio = collection[i][:studio]
-    if !result[studio]
-      result[studio] = collection[i][:worldwide_gross]
+    if !totals[studio]
+      totals[studio] = collection[i][:worldwide_gross]
     else
-      result[studio] += collection[i][:worldwide_gross]
+      totals[studio] += collection[i][:worldwide_gross]
     end
     i += 1
   end
+  puts result
   result
 end
 
@@ -111,15 +112,11 @@ def movies_with_directors_set(source)
     movie_index = 0
     while movie_index < source[director_index][:movies].length do
       director_array = []
-      director_name = source[director_index][:name]
-      title = source[director_index][:movies][movie_index][:title]
-      worldwide_gross = source[director_index][:movies][movie_index][:worldwide_gross]
-      studio = source[director_index][:movies][movie_index][:studio]
       element = {
-        :title => title, 
-        :director_name => director_name, 
-        :worldwide_gross => worldwide_gross,
-        :studio => studio
+        :title => source[director_index][:movies][movie_index][:title], 
+        :director_name => source[director_index][:name], 
+        :worldwide_gross => source[director_index][:movies][movie_index][:worldwide_gross],
+        :studio => source[director_index][:movies][movie_index][:studio]
       }
       director_array << element
       movie_index += 1
@@ -127,7 +124,6 @@ def movies_with_directors_set(source)
     result << director_array
     director_index += 1
   end
-  puts "result for gross_per_studio is #{result}"
   result
 end
 
