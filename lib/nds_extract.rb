@@ -84,8 +84,6 @@ def gross_per_studio(collection)
     end
     i += 1
   end
-  pp collection
-  puts totals
   totals
 end
 
@@ -125,6 +123,10 @@ def movies_with_directors_set(source)
     result << director_array
     director_index += 1
   end
+  puts "source is..."
+  pp source
+  puts "result is..."
+  pp result
   result
 end
 
