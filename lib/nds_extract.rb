@@ -127,6 +127,7 @@ def movies_with_directors_set(source)
     result << director_array
     director_index += 1
   end
+  puts "result for gross_per_studio is #{result}"
   result
 end
 
