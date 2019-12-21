@@ -101,9 +101,6 @@ def movies_with_directors_set(source)
   
   # { :name => "A", :movies => [{ :title => "Test" }] }
   #        # becomes... [[{:title => "Test", :director_name => "A"}], ...[], ... []]
-  
-  # Iterate through source[director_index][:movies] array, 
-  # push movies_with_director_names(source[director_index][:name], source[director_index][:movies][movie_index]) onto result array
 
   result = []
   director_index = 0
@@ -111,6 +108,7 @@ def movies_with_directors_set(source)
     movie_index = 0
     director_array = []
     while movie_index < source[director_index][:movies].length do
+      #include :worldwide_gross and :studio in order for studios_totals method to work
       element = {
         :title => source[director_index][:movies][movie_index][:title], 
         :director_name => source[director_index][:name], 
@@ -123,10 +121,6 @@ def movies_with_directors_set(source)
     result << director_array
     director_index += 1
   end
-  puts "source is..."
-  pp source
-  puts "result is..."
-  pp result
   result
 end
 
