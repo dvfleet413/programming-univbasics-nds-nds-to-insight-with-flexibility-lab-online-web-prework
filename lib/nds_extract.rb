@@ -86,7 +86,7 @@ def gross_per_studio(collection)
     i += 1
   end
   
-  puts result
+  puts "the result for gross_per_studio method is #{result}"
   result
 end
 
