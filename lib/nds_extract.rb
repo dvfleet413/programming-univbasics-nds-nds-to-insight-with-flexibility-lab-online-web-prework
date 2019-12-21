@@ -118,8 +118,8 @@ def movies_with_directors_set(source)
       element = {
         :title => title, 
         :director_name => director_name, 
-        :worldwide_gross = worldwide_gross,
-        :studio = studio
+        :worldwide_gross => worldwide_gross,
+        :studio => studio
       }
       director_array << element
       movie_index += 1
